@@ -18,8 +18,8 @@ logger = logging.getLogger("final")
 logger.info("النشر التلقائي شغال الان استمتع☠️")
 
 
-api_id = 1234567
-api_hash = 'your_api_hash'
+api_id = 23240929
+api_hash = 'c86e205a2bca8d6381b30a0d7681bba0'
 
 finalll = TelegramClient('final_session', api_id, api_hash)
 finalll.start()
