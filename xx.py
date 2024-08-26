@@ -185,7 +185,7 @@ async def final_handler(event):
         await event.reply(file='https://telegra.ph/file/d0a7bced6450be19ee869.jpg', message=final_commands)
     elif event.pattern_match.group(1) == "فحص":
         final_check = "**السورس يعمل بنجاح  ✅\nلعرض قائمة الاوامر أرسل `.الاوامر`**"
-        await event.reply(file='https://telegra.ph/file/d0a7bced6450be19ee869.jpg', message=final_check)
+        await event.reply(file='https://t.me/N1NN_N/4', message=final_check)
         final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
         final_invite = Get(final_invite)
 
