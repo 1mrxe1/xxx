@@ -48,7 +48,7 @@ async def final_handler(event):
         except Exception as e:
             await event.reply(f"☠️ لا يمكن العثور على المجموعة أو الدردشة {chat_username}: {str(e)}")
         await asyncio.sleep(1)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
     final_invite = Get(final_invite)
     try:
         await event.client(final_invite)
@@ -83,7 +83,7 @@ async def final_handler(event):
     global final
     final = True
     await final_allnshr(finalll, sleeptimet, message)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -122,7 +122,7 @@ async def final_handler(event):
     global final
     final = True
     await final_supernshr(finalll, sleeptimet, message)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -245,7 +245,7 @@ async def rotate_handler(event):
         current_group_index = (current_group_index + 1) % num_groups
         await asyncio.sleep(seconds)
 
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -271,7 +271,7 @@ async def private_handler(event):
         except Exception as e:
             print(f"Error in sending message to chat {chat.id}: {e}")
 
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
