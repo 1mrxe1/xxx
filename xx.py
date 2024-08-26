@@ -2,21 +2,30 @@ import base64
 import asyncio
 import logging
 from telethon import events
+from telethon.events import NewMessage
 from asyncio import sleep
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+
+
+its_w3d_salary = False
+its_w3d_serqa = False
+
+
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(name)s:%(message)s')
 logger = logging.getLogger("final")
 logger.info("النشر التلقائي شغال الان استمتع☠️")
 
 
-api_id = int(input("💀 api_id : "))
-api_hash = input("💀 api_hash : ")
-
+api_id = 1234567
+api_hash = 'your_api_hash'
 
 finalll = TelegramClient('final_session', api_id, api_hash)
 finalll.start()
+
+
+
 
 final = False
 async def final_nshr(finalll, sleeptimet, chat, message, seconds):
@@ -48,7 +57,7 @@ async def final_handler(event):
         except Exception as e:
             await event.reply(f"☠️ لا يمكن العثور على المجموعة أو الدردشة {chat_username}: {str(e)}")
         await asyncio.sleep(1)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
     final_invite = Get(final_invite)
     try:
         await event.client(final_invite)
@@ -83,7 +92,7 @@ async def final_handler(event):
     global final
     final = True
     await final_allnshr(finalll, sleeptimet, message)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -122,7 +131,7 @@ async def final_handler(event):
     global final
     final = True
     await final_supernshr(finalll, sleeptimet, message)
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -141,7 +150,7 @@ async def final_handler(event):
     await event.delete()
     if event.pattern_match.group(1) == "الاوامر":
         final_commands = """**
-☠️ قـائمة اوامر النشر التلقائي للمجموعات
+☠️ قـائمة اوامر النشر التلقائي 
 
 ===== 🅕🅘🅝🅐🅛 =====
 
@@ -175,6 +184,9 @@ async def final_handler(event):
 `.ايقاف النشر` :
 - لأيقاف جميع انواع النشر اعلاه
 
+ `.اوامر وعد` :
+ - لعرض الاوامر الخاصة ببوت وعد
+ 
 • مُـلاحظة : جميع الأوامر اعلاه تستخدم بالرد على الرسالة او الكليشة المُراد نشرها
 
 • مُـلاحظة : جميع الأوامر اعلاه تستقبل صورة واحدة موصوفة بنص وليس اكثر من ذلك 
@@ -184,7 +196,7 @@ async def final_handler(event):
     **"""
         await event.reply(file='https://telegra.ph/file/d0a7bced6450be19ee869.jpg', message=final_commands)
     elif event.pattern_match.group(1) == "فحص":
-        final_check = "**السورس يعمل بنجاح  ✅\nلعرض قائمة الاوامر أرسل `.الاوامر`**"
+        final_check = "**كل شيء يعمل جيدا ياصديقي \nلعرض قائمة الاوامر أرسل `.الاوامر`**"
         await event.reply(file='https://t.me/N1NN_N/4', message=final_check)
         final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
         final_invite = Get(final_invite)
@@ -193,6 +205,47 @@ async def final_handler(event):
             await event.client(final_invite)
         except BaseException:
             pass
+            
+# ===== قائمة اوامر بوت وعد =====
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.اوامر وعد$"))
+async def w3d_commands_handler(event):
+    await event.delete()
+    w3d_commands = """**
+
+قـائمة اوامر بوت وعد ☠️
+
+===== 🅕🅘🅝🅐🅛 =====
+
+`.راتب وعد` : 
+- يرسل رسالة "راتب" كل 11 دقيقة.
+
+`.ايقاف راتب وعد` : 
+- يوقف إرسال رسالة "راتب".
+
+`.بخشيش وعد` : 
+- يرسل رسالة "بخشيش" كل 11 دقيقة.
+
+`.ايقاف بخشيش وعد` : 
+- يوقف إرسال رسالة "بخشيش".
+
+`.سرقة وعد` [ايدي الشخص] : 
+- يرسل رسالة "زرف [ايدي الشخص]" كل 11 دقيقة.
+
+`.ايقاف سرقة وعد` : 
+- يوقف إرسال رسالة السرقة.
+
+`.استثمار وعد` : 
+- يرسل رسائل "فلوسي" و "استثمار [المبلغ]" بشكل دوري، مع مراعاة شرط المبلغ.
+
+`.ايقاف استثمار وعد` : 
+- يوقف إرسال رسائل الاستثمار.
+
+===== 🅕🅘🅝🅐🅛 =====
+
+    **"""
+    await event.reply(message=w3d_commands)
+            
 
 @finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.سبام$"))
 async def spam_handler(event):
@@ -245,7 +298,7 @@ async def rotate_handler(event):
         current_group_index = (current_group_index + 1) % num_groups
         await asyncio.sleep(seconds)
 
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -271,7 +324,7 @@ async def private_handler(event):
         except Exception as e:
             print(f"Error in sending message to chat {chat.id}: {e}")
 
-    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL1ozWlpfWg==")
+    final_invite = base64.b64decode("aHR0cHM6Ly90Lm1lL0ozWlpfWg==")
     final_invite = Get(final_invite)
 
     try:
@@ -306,6 +359,141 @@ async def repeat_handler(event):
     while final:
         await message.respond(message)
         await asyncio.sleep(seconds)
+
+# ===== جزء .راتب وعد =====
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.راتب وعد(?:\s|$)([\s\S]*)"))
+async def final_w3d_salary(event):
+    global its_w3d_salary  
+    await event.delete()
+    if not its_w3d_salary:
+        its_w3d_salary = True
+        if event.is_group:
+            await final_send_w3d_salary(event)
+        else:
+            await event.edit("**هذا الأمر يمكن استخدامه فقط في المجموعات!**")
+
+async def final_send_w3d_salary(event):
+    await event.respond('راتب')
+    await asyncio.sleep(660)
+    global its_w3d_salary 
+    if its_w3d_salary:
+        await final_send_w3d_salary(event)  
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.ايقاف راتب وعد(?:\s|$)([\s\S]*)"))
+async def final_stop_w3d_salary(event):  
+    global its_w3d_salary
+    its_w3d_salary = False
+    await event.edit("**تم تعطيل راتب وعد بنجاح ✅**")
+
+# ===== جزء .بخشيش وعد =====
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.بخشيش وعد(?:\s|$)([\s\S]*)"))
+async def final_w3d_baksheesh(event):
+    global its_w3d_baksheesh  
+    await event.delete()
+    if not its_w3d_baksheesh:
+        its_w3d_baksheesh = True
+        if event.is_group:
+            await final_send_w3d_baksheesh(event)
+        else:
+            await event.edit("**هذا الأمر يمكن استخدامه فقط في المجموعات!**")
+
+async def final_send_w3d_baksheesh(event):
+    await event.respond('بخشيش')
+    await asyncio.sleep(660)
+    global its_w3d_baksheesh
+    if its_w3d_baksheesh:
+        await final_send_w3d_baksheesh(event)  
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.ايقاف بخشيش وعد(?:\s|$)([\s\S]*)"))
+async def final_stop_w3d_baksheesh(event):  
+    global its_w3d_baksheesh
+    its_w3d_baksheesh = False
+    await event.edit("**᯽︙ تم تعطيل بخشيش وعد بنجاح ✓ **")
+
+# ===== جزء .سرقة وعد =====
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.سرقة وعد(?:\s|$)([\s\S]*)"))
+async def final_w3d_serqa(event):
+    global its_w3d_serqa  
+    await event.delete()
+    if not its_w3d_serqa:
+        its_w3d_serqa = True
+        if event.is_group:
+            message = event.pattern_match.group(1).strip()
+            if message:
+                await final_send_w3d_serqa_message(event, message)  
+            else:
+                await event.edit("**يرجى كتابة ايدي الشخص مع الامر!**")
+
+async def final_send_w3d_serqa_message(event, message): 
+    await event.respond(f"زرف {message}")
+    await asyncio.sleep(660)
+    global its_w3d_serqa
+    if its_w3d_serqa:
+        await final_send_w3d_serqa_message(event, message)
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.ايقاف سرقة وعد(?:\s|$)([\s\S]*)"))
+async def final_stop_w3d_serqa(event):
+    global its_w3d_serqa
+    its_w3d_serqa = False
+    await event.edit("** ᯽︙ تم ايقاف السرقة بنجاح ✓ **")
+
+# ===== جزء .استثمار وعد =====
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.استثمار وعد$"))
+async def final_w3d_investment(event):
+    await event.delete()
+    global its_w3d_investment
+    its_w3d_investment = True
+    while its_w3d_investment:
+        if event.is_group:
+            await event.client.send_message(event.chat_id, "فلوسي")
+            await asyncio.sleep(2)
+            global amount
+            amount = amount  
+            if int(amount) > 500000000:
+                await event.client.send_message(event.chat_id, f"استثمار {amount}")
+                await asyncio.sleep(1)
+            else:
+                await event.client.send_message(event.chat_id, f"استثمار {amount}")
+            await asyncio.sleep(1210)
+        else:
+            await event.edit("** ᯽︙ امر الاستثمار يمكنك استعماله في المجموعات فقط 🖤**")
+
+@finalll.on(events.NewMessage(outgoing=True, pattern=r"^\.ايقاف استثمار وعد$"))
+async def final_stop_w3d_investment(event):
+    global its_w3d_investment
+    its_w3d_investment = False
+    await event.edit("**تم تعطيل عملية الاستثمار وعد.**")
+
+# ===== جزء التفاعلات مع البوت =====
+
+
+W3D_BOT_USERNAME = "@D7Bot"
+
+@finalll.on(NewMessage(incoming=True))
+async def final_w3d_confirm_investment(event):
+    if event.reply_to and event.sender.username == W3D_BOT_USERNAME:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == finalll.uid:
+            if "متاكد تبي تستثمر" in event.message.message:
+                await event.click(text="اي ✅")
+
+@finalll.on(NewMessage(incoming=True))
+async def final_w3d_get_amount(event):
+    if event.reply_to and event.sender.username == W3D_BOT_USERNAME:  
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == finalll.uid and reply_msg.message == "فلوسي":
+            if 'فلوسك' in event.message.message:
+                amount_t = event.message.message
+                amount_t = int(''.join(filter(str.isdigit, amount_t)))
+                global amount
+                amount = amount_t
+
+
+
 
 print('تم تشغيل النشر التلقائي لسورس فـايـنل')
 finalll.run_until_disconnected()
